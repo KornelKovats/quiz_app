@@ -14,6 +14,7 @@ function loadQuestion() {
         const columnQuestion = document.createElement('td');
         const columnDeleteButton = document.createElement('td');
         const deleteButton = document.createElement('button');
+        deleteButton.className = 'btn btn-secondary';
         deleteButton.dataset.id = `${index + 1}`;
         deleteButton.innerText = 'Delete';
 
@@ -43,5 +44,6 @@ deletionContainer.addEventListener('click', (event) => {
       if (response.status === 200) {
         loadQuestion();
       }
-    });
+    }).catch((error) => console.log(error));
+    
 });
