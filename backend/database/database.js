@@ -7,11 +7,11 @@ const db = mysql.createConnection({
   password: process.env.MYSQL_PASSWORD,
   database: process.env.MYSQL_DATABASE,
 });
-db.connect((err) => {
-  if (err) {
-    console.error('Unable to connect to DB', err.sqlMessage);
-    return;
-  } console.log('Successfully connected to DB');
+const sqlQuery = (sql, args) => new Promise((resolve, reject) => {
+  db.query(sql, args, (err, data) => {
+    if (err) { reject(err); console.error(err.sqlMessage); }
+    resolve(data);
+  });
 });
 
-module.exports = db;
+module.exports = sqlQuery;
