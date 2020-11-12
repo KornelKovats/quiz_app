@@ -1,6 +1,6 @@
 const form = document.querySelector("#create_form");
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const question = document.querySelector("#question").value;
   const answers = [];
@@ -22,9 +22,8 @@ form.addEventListener("submit", (event) => {
       }
       answers.push(answer);
     }
-    loadQuestion();
   });
-  fetch("http://localhost:3000/api/questions", {
+  await fetch("http://localhost:3000/api/questions", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -32,35 +31,33 @@ form.addEventListener("submit", (event) => {
     body: JSON.stringify(obj),
   });
   alert("Question has been created!");
+  await loadQuestion();
 });
 
 
-function loadQuestion() {
-  const table = document.querySelector('table');
-  table.innerHTML = '';
-  fetch('http://localhost:3000/api/questions')
-    .then((response) => response.json())
-    .then((data) => {
-      data.forEach((element, index) => {
-        const row = document.createElement('tr');
-        const columnNumber = document.createElement('td');
-        const columnQuestion = document.createElement('td');
-        const columnDeleteButton = document.createElement('td');
-        const deleteButton = document.createElement('button');
-        deleteButton.className = 'btn btn-secondary';
-        deleteButton.dataset.id = `${index + 1}`;
-        deleteButton.innerText = 'Delete';
+async function loadQuestion() {
+  const table = document.querySelector("table");
+  table.innerHTML = "";
+  let response = await fetch("http://localhost:3000/api/questions");
+  let data = await response.json();
+  data.forEach((element, index) => {
+    const row = document.createElement("tr");
+    const columnNumber = document.createElement("td");
+    const columnQuestion = document.createElement("td");
+    const columnDeleteButton = document.createElement("td");
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "btn btn-secondary";
+    deleteButton.dataset.id = `${element.id}`;
+    deleteButton.innerText = "Delete";
+    columnNumber.innerText = index + 1;
+    columnQuestion.innerText = element.question;
+    columnDeleteButton.appendChild(deleteButton);
 
-        columnNumber.innerText = index + 1;
-        columnQuestion.innerText = element.question;
-        columnDeleteButton.appendChild(deleteButton);
+    row.setAttribute("id", `${element.id}`);
+    row.appendChild(columnNumber);
+    row.appendChild(columnQuestion);
+    row.appendChild(columnDeleteButton);
 
-        row.setAttribute('id', `${index + 1}`);
-        row.appendChild(columnNumber);
-        row.appendChild(columnQuestion);
-        row.appendChild(columnDeleteButton);
-
-        table.appendChild(row);
-      });
-    });
+    table.appendChild(row);
+  });
 }
