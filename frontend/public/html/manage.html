@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/manage.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Manage Question</h1>
+    <div class="manage_container">
+        <table>
+
+            
+        </table>
+
+    </div>
+    
+
+
+    <h1>Create a new question</h1>
+    <form action="" id="create_form" class="create_question">
+        <table>
+            <tr>
+                <td><input type="text" name="" id="question" placeholder="type your question here" required="required"></td>
+            </tr>
+            <tr>
+                <td>                <p>Answers</p></td>
+            </tr>
+            <tr>
+                <td><input class="answer_input" type="text" id="answer_1" required="required" pattern="[A-Za-z0-9]{1,20}" placeholder="Answer #1"></td>
+                <td><input type="radio" id="isgood_1" name="isgood" checked="checked" class="isgood"></td>
+            </tr>
+            <tr>
+                <td><input class="answer_input" type="text" id="answer_2" required="required" pattern="[A-Za-z0-9]{1,20}" placeholder="Answer #2"> </td>
+                <td><input type="radio" id="isgood_2" name="isgood" class="isgood"></td>
+            </tr>
+            <tr>
+                <td><input class="answer_input" type="text" id="answer_3" required="required" pattern="[A-Za-z0-9]{1,20}" placeholder="Answer #3"></td>
+                <td><input type="radio" id="isgood_3" name="isgood" class="isgood"></td>
+            </tr>
+            <tr>
+                <td><input class="answer_input" type="text" id="answer_4" required="required" pattern="[A-Za-z0-9]{1,20}" placeholder="Answer #4"></td>
+                <td><input type="radio" id="isgood_4" name="isgood" class="isgood"></td>
+            </tr>
+        </table>
+        <button type="submit">Create</button>
+    </form>
+    <script src="../javascripts/deleteQuiz.js"></script>
+    <script src="../javascripts/createquestion.js"></script>
+</body>
+</html>
