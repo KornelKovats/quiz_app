@@ -21,6 +21,7 @@ h2 {
   margin: 10px;
   font-size: medium;
 }
+
 .manage_container {
   display: flex;
   justify-content: center;
@@ -50,10 +51,6 @@ h2 {
   -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
-}
-input {
-  width: 100%;
-  margin: 5px;
 }
 table{
   height: 100%;
