@@ -7,13 +7,15 @@ apiPostQuestion.post('/questions', (req, res) => {
   const insertQuestionQuery = 'INSERT INTO questions (question) VALUES(?);';
   const question = [req.body.question];
   const insertAnswers = [];
-
+  const answers = req.body.answers
+  console.log(answers);
+  
 
   db.query(insertQuestionQuery, question, (err, rows) => {
     if (err) {
       console.log(err.sqlMessage);
       res.sendStatus(500);
-      return;
+      return; 
     }
     const questionId = rows.insertId;
     req.body.answers.forEach((element, index) => {
