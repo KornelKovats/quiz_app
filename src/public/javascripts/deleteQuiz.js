@@ -5,7 +5,7 @@ window.addEventListener("load", loadQuestion);
 async function loadQuestion() {
   const table = document.querySelector("table");
   table.innerHTML = "";
-  let response = await fetch("http://localhost:3000/api/questions");
+  let response = await fetch(`${process.env.PATH}/api/questions`);
   let data = await response.json();
   data.forEach((element, index) => {
     const row = document.createElement("tr");
@@ -32,7 +32,7 @@ async function loadQuestion() {
 deletionContainer.addEventListener("click", async (event) => {
   const { id } = event.target.dataset;
   try {
-    let response = await fetch(`http://localhost:3000/api/questions/${id}`, {
+    let response = await fetch(`${process.env.PATH}/api/questions/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

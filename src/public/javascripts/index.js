@@ -4,7 +4,7 @@ const h1 = document.querySelector('h1');
 
 window.addEventListener('load', async () => {
   h1.innerText = `SCORE: ${score}`;
-  const response = await fetch('http://localhost:3000/api/game');
+  const response = await fetch(`${process.env.PATH}/api/game`);
   const data = await response.json();
   document.querySelector('.question').innerHTML = data.question;
   h1.innerText = `SCORE: ${score}`;
@@ -37,7 +37,7 @@ function loadFileData() {
 
 async function loadQuestion() {
   h1.innerText = `SCORE: ${score}`;
-  fetch('http://localhost:3000/api/game')
+  fetch(`${process.env.PATH}/api/game`)
     .then((response) => response.json())
     .then((data) => {
       document.querySelector('.question').innerHTML = data.question;
