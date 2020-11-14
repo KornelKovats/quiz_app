@@ -28,35 +28,6 @@ apiPostQuestion.post('/questions', async (req, res) => {
   } catch (error) {
     res.status(500).json({error: error.message})
   }
-
-  /*db.query(insertQuestionQuery, question, (err, rows) => {
-    if (err) {
-      console.log(err.sqlMessage);
-      res.sendStatus(500);
-      return; 
-    }
-    const questionId = rows.insertId;
-    req.body.answers.forEach((element, index) => {
-      const answer = [];
-      answer.push(questionId);
-      answer.push(element[`answer_${index+1}`]);
-      if(element.is_correct === 1) {
-        answer.push(1);
-      }else{
-        answer.push(0);
-      }
-      insertAnswers.push(answer);
-    });
-    const insertAnswersQuery = 'INSERT INTO answers (question_id,answer,is_correct) VALUES ?';
-    db.query(insertAnswersQuery, [insertAnswers], (err,rows)=>{
-      if (err) {
-        console.log(err.sqlMessage);
-        res.sendStatus(500);
-        return;
-      }
-      res.json(rows);
-    })
-  })*/
 });
 
 module.exports = apiPostQuestion;
