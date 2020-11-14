@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(router);
 
+
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', (req, res) => {
